@@ -1,0 +1,54 @@
+.menuItem {
+	font-size: 15px;
+	color: var(--gray);
+	font-weight: 700;
+	line-height: 1.25rem;
+
+
+
+	border-radius: 6px;
+	padding: 10px 28px 10px 12px;
+	align-items: center;
+	cursor: pointer;
+	transition: all 0.3s;
+}
+
+.menuItem svg {
+	fill: var(--gray-light);
+	animation: 0.3s;
+}
+
+.isNoArrow {
+	display: grid;
+	grid-template-columns: 28px 1fr;
+	gap: 12px;
+}
+
+.isArrow {
+	display: grid;
+	grid-template-columns: 28px 1fr auto;
+	gap: 12px;
+}
+
+.arrow {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding-left: 20px;
+}
+
+.arrow svg {
+	width: 18px;
+	height: auto;
+}
+
+.activeMenuItem,
+.menuItem:hover {
+	background: var(--gray-dark);
+	color: var(--primary);
+}
+
+.activeMenuItem svg,
+.menuItem:hover svg {
+	fill: var(--primary)
+}

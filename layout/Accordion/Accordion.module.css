@@ -6,6 +6,7 @@
 .dashboard svg {
 	width: 27px;
 	height: auto;
+	fill: var(--gray-light);
 	align-items: center;
 	justify-content: center;
 }
