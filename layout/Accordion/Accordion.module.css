@@ -54,3 +54,33 @@
 	color: var(--gray-light);
 	padding: 40px 24px 8px;
 }
+
+.secondLevelMenu {
+	padding: 6px 40px 6px 48px;
+	display: grid;
+	transition: all 0.3s;
+
+	font-weight: 400;
+	font-size: 14px;
+	letter-spacing: normal;
+	text-transform: none;
+	line-height: 1.25rem;
+	color: #6e82a5;
+}
+
+.secondLevelActive,
+.secondLevelMenu:hover {
+	color: var(--primary);
+}
+
+.secondLevelActive svg,
+.secondLevelMenu:hover svg {
+	fill: var(--primary);
+}
+
+
+.isNew {
+	display: grid;
+	grid-template-columns: 1fr auto;
+	align-items: center;
+}

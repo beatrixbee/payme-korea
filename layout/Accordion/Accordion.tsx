@@ -1,41 +1,54 @@
 import { AccordionProps } from './Accordion.props';
 import styles from './Accordion.module.css';
 import cn from 'classnames';
-import Credit from './icons/credit.svg';
-import Users from './icons/users.svg';
-import Applications from './icons/applications.svg';
-import Projects from './icons/projects.svg';
+import New from './new.svg';
 import { MenuItem } from '../../components';
+import Link from 'next/link';
+import { applicationsFirstLevelMenu, applicationsSecondLevelMenu } from '../../helpers/helpers';
 
 export const Accordion = ({ className, ...props }: AccordionProps): JSX.Element => {
+	const buildFirstLevelMenu = () => {
+		return (
+			<>
+				{applicationsFirstLevelMenu.map(({ route, name, icon, id }) => (
+					<div className={styles.menuItemOuter} key={id}>
+						<>
+							<MenuItem arrow='right'>
+								{icon}
+								{name}
+							</MenuItem>
+							{buildSecondLevelMenu(route, id)}
+						</>
+					</div>
+				))}
+			</>
+		)
+	}
+
+	const buildSecondLevelMenu = (firstLevelRoute: string, firstLevelId: number) => {
+		return (
+			<>
+				{applicationsSecondLevelMenu.map(({ route, name, isNew, id, parentId }) => (
+					firstLevelId == parentId ?
+						<Link href={`/${firstLevelRoute}/${route}`} className={cn(styles.secondLevelMenu, {
+							[styles.secondLevelActive]: false,
+							[styles.isNew]: isNew
+						})}>
+							{name}
+							{isNew && <New />}
+						</Link>
+						: <></>
+				))}
+			</>
+		)
+	}
+
 	return (
 		<div className={cn(className, styles.dashboard)} {...props}>
-			<div className={styles.title}>Applications</div>
-			<div className={styles.menuItemOuter}>
-				<MenuItem arrow='right'>
-					<Projects />
-					Projects
-				</MenuItem>
-			</div>
-			<div className={styles.menuItemOuter}>
-				<MenuItem arrow='right'>
-					<Users />
-					User Manage
-				</MenuItem>
-			</div>
-			<div className={styles.menuItemOuter}>
-				<MenuItem arrow='right'>
-					<Credit />
-					Orders
-				</MenuItem>
-			</div>
-			<div className={styles.menuItemOuter}>
-				<MenuItem arrow='right'>
-					<Applications />
-					Applications
-				</MenuItem>
-			</div>
-		</div >
-
+			<>
+				<div className={styles.title}>Applications</div>
+				{buildFirstLevelMenu()}
+			</>
+		</div>
 	)
 }

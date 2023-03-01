@@ -1,35 +1,32 @@
 import { MenuProps } from './Menu.props';
 import styles from './Menu.module.css';
 import cn from 'classnames';
-import Credit from './icons/credit.svg';
-import Cart from './icons/cart.svg';
-import Activity from './icons/activity.svg';
-import Growth from './icons/growth.svg';
 import { MenuItem } from '../../components';
+import Link from 'next/link';
+import { dashboardMenu } from '../../helpers/helpers';
+import { useContext } from 'react';
+import { AppContext } from '../../context/app.context';
 
 export const Menu = ({ className, ...props }: MenuProps): JSX.Element => {
+
+	const { menu } = useContext(AppContext)
+
 	return (
-		<div className={cn(className, styles.dashboard)} {...props}>
-			<div className={styles.title}>Dashboards</div>
-			<div className={styles.menuItemOuter}>
-				<MenuItem active='true'>
-					<Cart />
-					Default
-				</MenuItem>
+		<div>
+			<div className={cn(className, styles.dashboard)} {...props}>
+				<div className={styles.title}>Dashboards</div>
+				{dashboardMenu.map(({ route, name, icon, id }) => (
+					<div className={styles.menuItemOuter} key={id}>
+						<Link href={`/${route}`}>
+							<MenuItem>
+								{icon}
+								{name}
+							</MenuItem>
+						</Link>
+					</div>
+				))}
 			</div>
-			<div className={styles.menuItemOuter}>
-				<MenuItem>
-					<Activity />
-					Sales
-				</MenuItem>
-			</div>
-			<div className={styles.menuItemOuter}>
-				<MenuItem>
-					<Growth />
-					Analytics
-				</MenuItem>
-			</div>
-		</div >
+		</div>
 
 	)
 }

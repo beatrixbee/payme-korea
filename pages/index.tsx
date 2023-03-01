@@ -1,6 +1,9 @@
 import { ButtonTag, Htag, Ptag } from '../components';
 import React from 'react';
-import { Layout, withLayout } from '../layout/Layout';
+import { withLayout } from '../layout/Layout';
+import { GetStaticProps } from 'next';
+import { dashboardMenu } from '../helpers/helpers';
+import { FirstLevelMenuItem } from '../interfaces/menu.interface';
 
 function Home(): JSX.Element {
 	return (
@@ -21,3 +24,27 @@ function Home(): JSX.Element {
 }
 
 export default withLayout(Home);
+
+export const getStaticProps: GetStaticProps<HomeProps> = async () => {
+	const firstCategory = 0;
+
+	const menu = dashboardMenu;
+
+	if (menu.length == 0) {
+		return {
+			notFound: true
+		};
+	}
+
+	return {
+		props: {
+			menu,
+			firstCategory,
+		}
+	};
+};
+
+interface HomeProps extends Record<string, unknown> {
+	menu: FirstLevelMenuItem[];
+	firstCategory: number;
+}
