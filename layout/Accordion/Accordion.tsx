@@ -5,22 +5,25 @@ import New from './new.svg';
 import { MenuItem } from '../../components';
 import Link from 'next/link';
 import { applicationsFirstLevelMenu, applicationsSecondLevelMenu } from '../../helpers/helpers';
+import { Fragment } from 'react';
 
 export const Accordion = ({ className, ...props }: AccordionProps): JSX.Element => {
 	const buildFirstLevelMenu = () => {
 		return (
 			<>
-				{applicationsFirstLevelMenu.map(({ route, name, icon, id }) => (
-					<div className={styles.menuItemOuter} key={id}>
-						<>
+				{applicationsFirstLevelMenu.map(({ route, name, icon, id }) => {
+					// if (route = 'true') {
+
+					// }
+					return (
+						<div className={styles.menuItemOuter} key={id}>
 							<MenuItem arrow='right'>
 								{icon}
 								{name}
 							</MenuItem>
 							{buildSecondLevelMenu(route, id)}
-						</>
-					</div>
-				))}
+						</div>)
+				})}
 			</>
 		)
 	}
@@ -30,14 +33,14 @@ export const Accordion = ({ className, ...props }: AccordionProps): JSX.Element 
 			<>
 				{applicationsSecondLevelMenu.map(({ route, name, isNew, id, parentId }) => (
 					firstLevelId == parentId ?
-						<Link href={`/${firstLevelRoute}/${route}`} className={cn(styles.secondLevelMenu, {
+						<Link href={`/${firstLevelRoute}/${route}`} key={id} className={cn(styles.secondLevelMenu, {
 							[styles.secondLevelActive]: false,
 							[styles.isNew]: isNew
 						})}>
 							{name}
 							{isNew && <New />}
 						</Link>
-						: <></>
+						: <Fragment key={id}></Fragment>
 				))}
 			</>
 		)
