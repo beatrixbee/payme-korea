@@ -11,7 +11,7 @@ function Home({ menu, firstCategory, balance }: HomeProps): JSX.Element {
 
 	return (
 		<>
-			<Htag tag='h1' >AnvarovSaid</Htag>
+			<Htag tag='h1' >Hashimov Foziljon</Htag>
 			<span className='h1'>Typography</span>
 			<ButtonTag appearence='primary' className='dsa'>Reports</ButtonTag>
 			<ButtonTag appearence='primary' arrow='right'>Reports</ButtonTag>

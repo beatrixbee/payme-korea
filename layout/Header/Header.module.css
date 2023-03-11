@@ -1,0 +1,107 @@
+.header {
+	display: grid;
+	grid-template-columns: 1fr auto;
+	padding: 0px 36px;
+	background-color: var(--white);
+	position: relative;
+}
+
+.search {
+	display: flex;
+	align-items: center;
+}
+
+.search svg {
+	fill: var(--gray);
+}
+
+.input {
+	display: block;
+	width: 100%;
+	border: none;
+	padding: 7px 16px;
+	font-size: 0.8125rem;
+	font-weight: 400;
+	line-height: 1.25rem;
+	color: #3c4d62;
+	align-items: center;
+}
+
+.input::placeholder {
+	color: #b6c6e3;
+}
+
+.input:focus {
+	outline: none;
+}
+
+.buttons {
+	display: grid;
+	grid-template-columns: auto auto 1fr;
+	align-items: center;
+	padding: 14px 4px;
+	gap: 20px
+}
+
+.buttons>svg {
+	fill: var(--gray);
+	cursor: pointer;
+}
+
+.avatar {
+	display: grid;
+	grid-template-columns: auto 1fr auto;
+	align-items: center;
+	gap: 16px;
+	padding: 4px 0px;
+	color: #526484;
+	font-size: 13px;
+	line-height: 16px;
+	font-weight: 700;
+	cursor: pointer;
+}
+
+.avatar svg:first-child {
+	fill: var(--primary)
+}
+
+.avatarDropdown {
+	position: absolute;
+	right: 22px;
+	top: 64px;
+	display: grid;
+	border: 1px solid #e5e9f2;
+	box-shadow: 0 3px 12px 1px rgb(58 34 114 / 15%);
+	border-radius: 4px;
+	color: var(--gray);
+	min-width: 280px;
+}
+
+.avatarDropdown a {
+	cursor: pointer;
+}
+
+.avatarDropdownInnerItem {
+	padding: 9.2px 0px;
+	font-size: 13px;
+	line-height: 1.4rem;
+	font-weight: 500;
+}
+
+.avatarDropdownTop {
+	background-color: #f5f6fa;
+	padding: 18px 28px;
+	display: grid;
+	grid-template-columns: [start] 40px [middle] 1fr [end];
+	align-items: center;
+}
+
+.avatarDropdownInner,
+.avatarDropdownBottom {
+	display: grid;
+	background-color: var(--white);
+	padding: 12px 28px;
+	border-top: 1px solid #e5e9f2;
+}
+
+.avatarDropdownBottom {}
