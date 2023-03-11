@@ -29,6 +29,7 @@ export interface FirstLevelMenuItem {
 	name: string;
 	icon: JSX.Element;
 	id: FirstLevelCategory | DashboardCategory;
+	isOpened?: boolean;
 }
 
 export interface SecondLevelMenuItem {

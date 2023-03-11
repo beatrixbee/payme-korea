@@ -4,24 +4,37 @@ import cn from 'classnames';
 import New from './new.svg';
 import { MenuItem } from '../../components';
 import Link from 'next/link';
-import { applicationsFirstLevelMenu, applicationsSecondLevelMenu } from '../../helpers/helpers';
-import { Fragment } from 'react';
+import { applicationsSecondLevelMenu } from '../../helpers/helpers';
+import { Fragment, useContext } from 'react';
+import { useRouter } from 'next/router';
+import { AppContext } from '../../context/app.context';
 
 export const Accordion = ({ className, ...props }: AccordionProps): JSX.Element => {
+	const { accordion, setAccordion } = useContext(AppContext);
+	const router = useRouter();
+	const openAccordionItem = (id: number) => {
+		setAccordion && setAccordion(accordion.map(a => {
+			if (a.id == id) {
+				a.isOpened = true;
+			}
+			return a
+		}))
+	}
 	const buildFirstLevelMenu = () => {
 		return (
 			<>
-				{applicationsFirstLevelMenu.map(({ route, name, icon, id }) => {
-					// if (route = 'true') {
-
-					// }
+				{accordion.map(({ route, name, icon, id, isOpened }) => {
 					return (
 						<div className={styles.menuItemOuter} key={id}>
-							<MenuItem arrow='right'>
+							<MenuItem arrow='right' onClick={() => openAccordionItem(id)}>
 								{icon}
 								{name}
 							</MenuItem>
-							{buildSecondLevelMenu(route, id)}
+							<div className={cn(styles.firstLevelBlock, {
+								[styles.firstLevelBlockOpened]: isOpened
+							})}>
+								{buildSecondLevelMenu(route, id)}
+							</div>
 						</div>)
 				})}
 			</>
