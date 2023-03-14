@@ -31,7 +31,7 @@ export const Accordion = ({ className, ...props }: AccordionProps): JSX.Element 
 								{name}
 							</MenuItem>
 							<div className={cn(styles.firstLevelBlock, {
-								[styles.firstLevelBlockOpened]: isOpened
+								[styles.firstLevelBlockOpened]: isOpened || applicationsSecondLevelMenu.map(sl => { return `/${route}/${sl.route}` }).includes(router.asPath)
 							})}>
 								{buildSecondLevelMenu(route, id)}
 							</div>
@@ -46,10 +46,13 @@ export const Accordion = ({ className, ...props }: AccordionProps): JSX.Element 
 			<>
 				{applicationsSecondLevelMenu.map(({ route, name, isNew, id, parentId }) => (
 					firstLevelId == parentId ?
-						<Link href={`/${firstLevelRoute}/${route}`} key={id} className={cn(styles.secondLevelMenu, {
-							[styles.secondLevelActive]: false,
-							[styles.isNew]: isNew
-						})}>
+						<Link
+							href={`/${firstLevelRoute}/${route}`}
+							key={id}
+							className={cn(styles.secondLevelMenu, {
+								[styles.secondLevelActive]: `/${firstLevelRoute}/${route}` == router.asPath,
+								[styles.isNew]: isNew
+							})}>
 							{name}
 							{isNew && <New />}
 						</Link>

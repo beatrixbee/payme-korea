@@ -1,5 +1,5 @@
 import { ButtonTag, Htag, Ptag } from '../components';
-import React from 'react';
+import React, { useState } from 'react';
 import { withLayout } from '../layout/Layout';
 import { GetStaticProps } from 'next';
 import { dashboardMenu } from '../helpers/helpers';
@@ -8,7 +8,6 @@ import axios from 'axios';
 import { Balance } from '../interfaces/payme.interface';
 
 function Home({ menu, firstCategory, balance }: HomeProps): JSX.Element {
-
 	return (
 		<>
 			<Htag tag='h1' >Hashimov Foziljon</Htag>

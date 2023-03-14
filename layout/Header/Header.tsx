@@ -7,9 +7,11 @@ import User from './user.svg';
 import Search from './search.svg';
 import Arrow from './arrow.svg'
 import Link from 'next/link';
+import { useState } from 'react';
 
 
 export const Header = ({ className, ...props }: HeaderProps): JSX.Element => {
+	const [dropdownActive, setDropdownActive] = useState<boolean>(false)
 	return (
 		<header className={cn(className, styles.header)} {...props}>
 			<div className={styles.search}>
@@ -19,12 +21,14 @@ export const Header = ({ className, ...props }: HeaderProps): JSX.Element => {
 			<div className={styles.buttons}>
 				<Bell />
 				<Chat />
-				<a className={styles.avatar}>
+				<div className={styles.avatar} onClick={() => setDropdownActive(!dropdownActive)}>
 					<User />
 					Anvarov Said
 					<Arrow />
-				</a>
-				<div className={styles.avatarDropdown}>
+				</div>
+				<div className={cn(styles.avatarDropdown, {
+					[styles.avatarDropdownIsActive]: dropdownActive
+				})}>
 					<div className={styles.avatarDropdownTop}>
 						<User />
 						Anvarov Said
