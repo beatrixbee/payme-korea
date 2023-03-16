@@ -15,7 +15,7 @@ export const Accordion = ({ className, ...props }: AccordionProps): JSX.Element 
 	const openAccordionItem = (id: number) => {
 		setAccordion && setAccordion(accordion.map(a => {
 			if (a.id == id) {
-				a.isOpened = true;
+				a.isOpened = !a.isOpened;
 			}
 			return a
 		}))
