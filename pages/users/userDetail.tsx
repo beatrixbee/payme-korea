@@ -5,7 +5,7 @@ function UserDetail(): JSX.Element {
 	return (
 		<Htag
 			tag='h1'
-		>User Detail</Htag>
+		>Project Cards</Htag>
 	)
 }
 

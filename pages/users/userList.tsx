@@ -5,7 +5,7 @@ function UserList(): JSX.Element {
 	return (
 		<Htag
 			tag='h1'
-		>User List</Htag>
+		>Project Cards</Htag>
 	)
 }
 
