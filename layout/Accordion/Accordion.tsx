@@ -14,6 +14,9 @@ export const Accordion = ({ className, ...props }: AccordionProps): JSX.Element 
 	const router = useRouter();
 	const openAccordionItem = (id: number) => {
 		setAccordion && setAccordion(accordion.map(a => {
+			if (a.isOpened == true) {
+				a.isOpened = false
+			}
 			if (a.id == id) {
 				a.isOpened = true;
 			}
