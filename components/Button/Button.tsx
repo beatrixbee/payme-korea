@@ -15,7 +15,7 @@ export const ButtonTag = ({ appearence, arrow = 'none', children, className, ...
 			{children}
 			{arrow != 'none' && <span className={cn(styles.arrow, {
 				[styles.down]: arrow == 'down',
-				[styles.down]: arrow == 'right'
+				[styles.right]: arrow == 'right'
 			})}>
 				<ArrowIcon />
 			</span>}

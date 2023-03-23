@@ -6,6 +6,7 @@ import { dashboardMenu } from '../helpers/helpers';
 import { FirstLevelMenuItem } from '../interfaces/menu.interface';
 import axios from 'axios';
 import { Balance } from '../interfaces/payme.interface';
+import { DashlightComponent } from '../page-components';
 
 function Home({ menu, firstCategory, balance }: HomeProps): JSX.Element {
 	return (
@@ -21,11 +22,13 @@ function Home({ menu, firstCategory, balance }: HomeProps): JSX.Element {
 			<Ptag size='l'>Some text large size</Ptag>
 			<Ptag size='m'>Some text large size</Ptag>
 			<Ptag size='s'>Some text large size</Ptag>
-			{balance?.data.name}<hr />
-			{balance?.data.account}<hr />
-			{balance?.data.branch}<hr />
-			{balance?.data.code_currency}<hr />
-			{balance?.data.current_balance}<hr />
+			<DashlightComponent>
+				{balance?.data.name}<br />
+				{balance?.data.account}<br />
+				{balance?.data.branch}<br />
+				{balance?.data.code_currency}<br />
+				{balance?.data.current_balance}<br />
+			</DashlightComponent>
 		</>
 	);
 }

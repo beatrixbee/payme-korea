@@ -1,13 +1,14 @@
 import { ButtonTag, Htag, Ptag } from '../components';
 import React from 'react';
 import { withLayout } from '../layout/Layout';
+import { DashlightComponent } from '../page-components';
 
 function Default({ }): JSX.Element {
 
 	return (
-		<>
-			<Htag tag='h1' >Default</Htag>
-		</>
+		<DashlightComponent>
+			hello
+		</DashlightComponent>
 	);
 }
 
