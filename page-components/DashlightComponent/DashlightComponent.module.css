@@ -1,3 +1,113 @@
 .dashlight {
 	padding: 32px 36px;
 }
+
+.content {}
+
+.title {
+	display: grid;
+	grid-template-columns: 1fr auto auto;
+	align-items: center;
+	justify-items: left;
+	gap: 16px;
+	padding-bottom: 1.75rem
+}
+
+.titleText {
+	line-height: 0;
+}
+
+.title em {
+	font-size: 1.4em;
+}
+
+.titleButton {
+	display: flex;
+	align-items: center;
+}
+
+.ButtonText {
+	padding-left: 8px;
+}
+
+.cardData {
+	margin-top: 0.5rem;
+}
+
+.upperContent {
+	display: grid;
+	grid-template-columns: auto auto;
+	grid-template-rows: auto auto;
+	gap: 28px;
+	padding: 0 0 14px 0;
+}
+
+.bottomContent {
+	display: grid;
+	grid-template-columns: 50% 50%;
+	padding: 14px 0 14px 0;
+}
+
+.cardDataList {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.cardDataListItem {
+	display: grid;
+	grid-template-columns: 1fr auto;
+	padding: 8px 0;
+	;
+}
+
+.cardDataListItem em {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 1.5rem;
+	height: 44px;
+	width: 44px;
+	border-radius: 6px;
+}
+
+/* .iconCard {
+	max-width: 50%;
+} */
+
+.firstIcon {
+	color: var(--primary-dim);
+	background-color: var(--bg-primary-dim);
+}
+
+.secondIcon {
+	color: var(--info-dim);
+	background-color: var(--bg-info-dim)
+}
+
+.thirdIcon {
+	color: var(--pink-dim);
+	background-color: var(--bg-pink-dim)
+}
+
+.fourthIcon {
+	color: var(--purple-dim);
+	background-color: var(--bg-purple-dim)
+}
+
+.fifthIcon {
+	color: var(--green-dim);
+	background-color: var(--bg-green-dim)
+}
+
+.itemTitle {
+	font-size: 0.8125rem;
+	color: var(--gray-light);
+	line-height: 1.65;
+}
+
+.itemNumber {
+	font-size: 1.25rem;
+	color: var(--black);
+	font-weight: 700;
+}

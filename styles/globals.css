@@ -42,6 +42,16 @@ a {
 	--green: #1E00AC;
 	--yellow: #F4BD0E;
 	--font-family: 'DM Sans', sans-serif;
+	--primary-dim: #854fff;
+	--bg-primary-dim: #efe8ff;
+	--info-dim: #09c2de;
+	--bg-info-dim: #dff7fb;
+	--pink-dim: #ff63a5;
+	--bg-pink-dim: #ffebf3;
+	--purple-dim: #816bff;
+	--bg-purple-dim: #efecff;
+	--green-dim: #1ee0ac;
+	--bg-green-dim: #e6fcf6;
 }
 
 
