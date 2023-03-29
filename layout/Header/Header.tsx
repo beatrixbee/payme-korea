@@ -15,16 +15,16 @@ export const Header = ({ className, ...props }: HeaderProps): JSX.Element => {
 	return (
 		<header className={cn(className, styles.header)} {...props}>
 			<div className={styles.search}>
-				<Search />
+				<em className="ni ni-search" />
 				<input className={styles.input} placeholder='Search anything' />
 			</div>
 			<div className={styles.buttons}>
-				<Bell />
-				<Chat />
+				<em className="ni ni-comments" />
+				<em className="ni ni-bell" />
 				<div className={styles.avatar} onClick={() => setDropdownActive(!dropdownActive)}>
 					<User />
-					Anvarov Said
-					<Arrow />
+					<span>Anvarov Said</span>
+					<em className="ni ni-chevron-down" />
 				</div>
 				<div className={cn(styles.avatarDropdown, {
 					[styles.avatarDropdownIsActive]: dropdownActive

@@ -15,7 +15,7 @@ export const MenuItem = ({ active = 'false', arrow = 'none', children, className
 			{children}
 			{
 				arrow != 'none' && <span className={styles.arrow}>
-					<Arrow />
+					<em className="icon ni ni-chevron-right" />
 				</span>
 			}
 		</div >

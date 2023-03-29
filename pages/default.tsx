@@ -4,16 +4,18 @@ import { withLayout } from '../layout/Layout';
 import { DashlightComponent } from '../page-components';
 import { GetStaticProps } from 'next';
 import axios from 'axios';
-import { Balance } from '../interfaces/payme.interface';
+import { Balance, BalanceMoney } from '../interfaces/payme.interface';
 import { FirstLevelMenuItem } from '../interfaces/menu.interface';
+import Link from 'next/link';
 
-function Default({ balance }: DashlightProps): JSX.Element {
+function Default({ balance, balanceMoney }: DashlightProps): JSX.Element {
 
 	return (
 		<DashlightComponent
 			balance={balance}
+			balanceMoney={balanceMoney}
 		>
-
+			<Link href="/">Index</Link>
 		</DashlightComponent>
 	);
 }
@@ -29,9 +31,16 @@ export const getStaticProps: GetStaticProps<DashlightProps> = async () => {
 				notFound: true
 			};
 		}
+		const { data: balanceMoney, status: balanceMoneyStatus, statusText: balanceMoneyStatusText } = await axios.get(process.env.PAYME_BALANCE_MONEY + '');
+		if (balanceMoneyStatusText != 'OK') {
+			return {
+				notFound: true
+			};
+		}
 		return {
 			props: {
 				balance,
+				balanceMoney,
 				firstCategory,
 			}
 		};
@@ -44,4 +53,5 @@ export const getStaticProps: GetStaticProps<DashlightProps> = async () => {
 
 interface DashlightProps extends Record<string, unknown> {
 	balance?: Balance;
+	balanceMoney?: BalanceMoney;
 }

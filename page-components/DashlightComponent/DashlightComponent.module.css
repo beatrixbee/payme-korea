@@ -2,23 +2,39 @@
 	padding: 32px 36px;
 }
 
-.content {}
+.content {
+	display: grid;
+	gap: 28px;
+}
 
 .title {
 	display: grid;
 	grid-template-columns: 1fr auto auto;
+	grid-template-areas:
+		"title button1 button2";
 	align-items: center;
 	justify-items: left;
 	gap: 16px;
 	padding-bottom: 1.75rem
 }
 
+
+
 .titleText {
 	line-height: 0;
+	grid-area: title;
 }
 
 .title em {
 	font-size: 1.4em;
+}
+
+.titleButton:first-child {
+	grid-area: button1;
+}
+
+.titleButton:last-child {
+	grid-area: button2;
 }
 
 .titleButton {
@@ -36,16 +52,15 @@
 
 .upperContent {
 	display: grid;
-	grid-template-columns: auto auto;
+	grid-template-columns: 1fr 1fr;
 	grid-template-rows: auto auto;
 	gap: 28px;
-	padding: 0 0 14px 0;
 }
 
 .bottomContent {
 	display: grid;
-	grid-template-columns: 50% 50%;
-	padding: 14px 0 14px 0;
+	grid-template-columns: 1fr 1fr;
+	gap: 28px
 }
 
 .cardDataList {
@@ -110,4 +125,28 @@
 	font-size: 1.25rem;
 	color: var(--black);
 	font-weight: 700;
+}
+
+@media screen and (max-width: 575px) {
+
+	.upperContent,
+	.bottomContent {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 28px;
+	}
+
+	.title {
+		display: grid;
+		grid-template-columns: auto auto;
+		grid-template-rows: 1fr 1fr;
+		grid-template-areas:
+			"title title"
+			"button1 button2";
+		align-items: center;
+		justify-items: left;
+		gap: 16px;
+		padding-bottom: 1.75rem;
+		justify-content: space-between;
+	}
 }

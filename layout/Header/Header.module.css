@@ -13,8 +13,8 @@
 	align-items: center;
 }
 
-.search svg {
-	fill: var(--gray);
+.search em {
+	color: var(--gray);
 }
 
 .input {
@@ -45,9 +45,10 @@
 	gap: 20px
 }
 
-.buttons>svg {
-	fill: var(--gray);
+.buttons>em {
+	color: var(--gray);
 	cursor: pointer;
+	font-size: 1.5rem;
 }
 
 .avatar {
@@ -63,8 +64,12 @@
 	cursor: pointer;
 }
 
-.avatar svg:first-child {
+.avatar svg {
 	fill: var(--primary)
+}
+
+.avatar em {
+	font-size: 16px;
 }
 
 .avatarDropdown {
@@ -111,4 +116,21 @@
 
 .avatarDropdownIsActive {
 	display: block;
+}
+
+@media screen and (max-width: 575px) {
+
+	.avatar {
+		grid-template-columns: 1fr;
+		gap: 0px;
+	}
+
+	.avatar :nth-child(2) {
+		display: none;
+	}
+
+	.avatar :nth-child(3) {
+		display: none;
+	}
+
 }

@@ -7,15 +7,19 @@
 
 
 	border-radius: 6px;
-	padding: 10px 28px 10px 12px;
+	padding: 10px 6px 10px 12px;
 	align-items: center;
 	cursor: pointer;
 	transition: all 0.3s;
 }
 
-.menuItem svg {
-	fill: var(--gray-light);
+.menuItem em {
+	color: var(--gray-light);
+	font-size: 24px;
 	animation: 0.3s;
+	letter-spacing: normal;
+	vertical-align: middle;
+	transition: color .4s, background-color .4s;
 }
 
 .isNoArrow {
@@ -48,7 +52,7 @@
 	color: var(--primary);
 }
 
-.activeMenuItem svg,
-.menuItem:hover svg {
-	fill: var(--primary)
+.activeMenuItem em,
+.menuItem:hover em {
+	color: var(--primary)
 }

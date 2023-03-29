@@ -5,24 +5,25 @@ import { GetStaticProps } from 'next';
 import { dashboardMenu } from '../helpers/helpers';
 import { FirstLevelMenuItem } from '../interfaces/menu.interface';
 import axios from 'axios';
-import { Balance } from '../interfaces/payme.interface';
+import { Balance, BalanceMoney } from '../interfaces/payme.interface';
 import { DashlightComponent } from '../page-components';
 
 function Home({ menu, firstCategory, balance }: HomeProps): JSX.Element {
 	return (
 		<>
-			<Htag tag='h1' >Hashimov Foziljon</Htag>
-			<span className='h1'>Typography</span>
-			<ButtonTag appearence='primary' className='dsa'>Reports</ButtonTag>
-			<ButtonTag appearence='primary' arrow='right'>Reports</ButtonTag>
-			<ButtonTag appearence='white'>Reports</ButtonTag>
-			<ButtonTag appearence='white' arrow='right'>Reports</ButtonTag>
-			<ButtonTag appearence='white' arrow='down'>Reports</ButtonTag>
-			<Ptag>Some text default size</Ptag>
-			<Ptag size='l'>Some text large size</Ptag>
-			<Ptag size='m'>Some text large size</Ptag>
-			<Ptag size='s'>Some text large size</Ptag>
+
 			<DashlightComponent>
+				<Htag tag='h1' >Hashimov Foziljon</Htag>
+				<span className='h1'>Typography</span>
+				<ButtonTag appearence='primary' className='dsa'>Reports</ButtonTag>
+				<ButtonTag appearence='primary' arrow='right'>Reports</ButtonTag>
+				<ButtonTag appearence='white'>Reports</ButtonTag>
+				<ButtonTag appearence='white' arrow='right'>Reports</ButtonTag>
+				<ButtonTag appearence='white' arrow='down'>Reports</ButtonTag>
+				<Ptag>Some text default size</Ptag>
+				<Ptag size='l'>Some text large size</Ptag>
+				<Ptag size='m'>Some text large size</Ptag>
+				<Ptag size='s'>Some text large size</Ptag>
 				{balance?.data.name}<br />
 				{balance?.data.account}<br />
 				{balance?.data.branch}<br />
@@ -38,8 +39,8 @@ export default withLayout(Home);
 export const getStaticProps: GetStaticProps<HomeProps> = async () => {
 	const firstCategory = 0;
 	try {
-		const { data: balance, status, statusText } = await axios.get(process.env.PAYME_BALANCE + '');
-		if (statusText != 'OK') {
+		const { data: balance, status: balanceStatus, statusText: balanceStatusText } = await axios.get(process.env.PAYME_BALANCE + '');
+		if (balanceStatusText != 'OK') {
 			return {
 				notFound: true
 			};
@@ -54,7 +55,7 @@ export const getStaticProps: GetStaticProps<HomeProps> = async () => {
 		return {
 			notFound: true
 		};
-	}
+	};
 };
 
 interface HomeProps extends Record<string, unknown> {

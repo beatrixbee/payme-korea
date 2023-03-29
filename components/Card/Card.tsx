@@ -6,7 +6,8 @@ import { format } from 'date-fns'
 
 export const Card = ({ children, className, ...props }: CardProps): JSX.Element => {
 	return (
-		<div className={cn(styles.card, className)}>
+		<div className={cn(styles.card, className)}
+			{...props}>
 			{children}
 		</div>
 	);

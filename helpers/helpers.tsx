@@ -1,23 +1,16 @@
-import Cart from './icons/cart.svg';
-import Activity from './icons/activity.svg';
-import Growth from './icons/growth.svg';
-import Credit from './icons/credit.svg';
-import Users from './icons/users.svg';
-import Applications from './icons/applications.svg';
-import Projects from './icons/projects.svg';
 import { DashboardCategory, FirstLevelCategory, FirstLevelMenuItem, SecondLevelCategory, SecondLevelMenuItem } from '../interfaces/menu.interface';
 
 export const dashboardMenu: FirstLevelMenuItem[] = [
-	{ route: 'default', name: 'Default', icon: <Cart />, id: DashboardCategory.Default },
-	{ route: 'sales', name: 'Sales', icon: <Activity />, id: DashboardCategory.Sales },
-	{ route: 'analytics', name: 'Analytics', icon: <Growth />, id: DashboardCategory.Analytics },
+	{ route: 'default', name: 'Default', icon: <em className="ni ni-cart-fill" />, id: DashboardCategory.Default },
+	{ route: 'sales', name: 'Sales', icon: <em className="ni ni-activity-round-fill" />, id: DashboardCategory.Sales },
+	{ route: 'analytics', name: 'Analytics', icon: <em className="ni ni-growth-fill" />, id: DashboardCategory.Analytics },
 ]
 
 export const applicationsFirstLevelMenu: FirstLevelMenuItem[] = [
-	{ route: 'projects', name: 'Projects', icon: <Projects />, id: FirstLevelCategory.Projects },
-	{ route: 'users', name: 'User Manage', icon: <Users />, id: FirstLevelCategory.UserManage },
-	{ route: 'orders', name: 'Orders', icon: <Credit />, id: FirstLevelCategory.Order },
-	{ route: 'applications', name: 'Applications', icon: <Applications />, id: FirstLevelCategory.Applications },
+	{ route: 'projects', name: 'Projects', icon: <em className="icon ni ni-tile-thumb-fill" />, id: FirstLevelCategory.Projects },
+	{ route: 'users', name: 'User Manage', icon: <em className="icon ni ni-users-fill" />, id: FirstLevelCategory.UserManage },
+	{ route: 'orders', name: 'Orders', icon: <em className="icon ni ni-cc-alt2-fill" />, id: FirstLevelCategory.Order },
+	{ route: 'applications', name: 'Applications', icon: <em className="icon ni ni-grid-alt-fill" />, id: FirstLevelCategory.Applications },
 ]
 
 export const applicationsSecondLevelMenu: SecondLevelMenuItem[] = [

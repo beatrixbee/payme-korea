@@ -1,4 +1,13 @@
 module.exports = {
+  async redirects() {
+    return [
+      {
+        source: '/',
+        destination: '/default',
+        permanent: true,
+      },
+    ]
+  },
   images: {
     domains: ['courses-top.ru']
   },

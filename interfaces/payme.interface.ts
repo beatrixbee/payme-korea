@@ -1,5 +1,4 @@
-
-export interface Data {
+export interface BalanceData {
 	branch: string;
 	name: string;
 	account: string;
@@ -7,13 +6,32 @@ export interface Data {
 	current_balance: string;
 }
 
-export interface Error {
+export interface BalanceError {
 	code: number;
 	message: string;
 }
 
 export interface Balance {
 	success: boolean;
-	data: Data;
-	error: Error;
+	data: BalanceData;
+	error: BalanceError;
+}
+
+export interface BalanceMoney {
+	success: boolean
+	data: BalanceMoneyData
+	error: BalanceMoneyError
+}
+
+export interface BalanceMoneyData {
+	branch: string
+	name: string
+	account: string
+	code_currency: string
+	current_balance: string
+}
+
+export interface BalanceMoneyError {
+	code: number
+	message: string
 }
