@@ -1,0 +1,132 @@
+.wrapper {
+	display: grid;
+	grid-template-columns: auto;
+	min-height: 100vh;
+	grid-template-rows: 1fr auto;
+	background-color: var(--white);
+	/* grid-template-areas:
+		"sidebar header"
+		"sidebar body"
+		"sidebar footer"
+	; */
+}
+
+.loginContent {
+	display: grid;
+	place-items: center;
+}
+
+.loginBlock {
+	box-shadow: 0px 1px 3px 0px rgba(54, 74, 99, 0.05);
+	border: 0 solid rgba(0, 0, 0, 0.125);
+	border-radius: 4px;
+}
+
+.logo {
+	display: grid;
+	place-items: center;
+	padding-bottom: 1.5rem;
+}
+
+.logo a {
+	display: flex;
+}
+
+.formContent {
+	padding: 2.5rem;
+}
+
+.title {
+	font-size: 1.5rem;
+	margin-bottom: 8px;
+}
+
+.titleBottomSpan {
+	font-size: 14px;
+}
+
+.titleContent {
+	padding-bottom: 20px;
+}
+
+.inputContent {
+	margin-bottom: 1.25rem;
+}
+
+.inputContent:last-child {
+	margin-bottom: 0;
+}
+
+.label {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-bottom: 0.5rem;
+	font-size: 0.875rem;
+	font-weight: 500;
+	color: #344357;
+}
+
+.label a {
+	color: var(--primary);
+}
+
+.input {
+	height: calc(2.625rem + 2px);
+	padding: 0.6875rem 1rem;
+	font-size: 0.9375rem;
+	line-height: 1.25rem;
+	border-radius: 5px;
+	width: 100%;
+	color: #3c4d62;
+	background-color: #fff;
+	background-clip: padding-box;
+	border: 1px solid #dbdfea;
+	transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.input::placeholder {
+	color: #b6c6e3;
+}
+
+.submitButton {
+	cursor: pointer;
+	letter-spacing: 0.02em;
+	display: grid;
+	width: 100%;
+	place-items: center;
+	padding: 11px 24px;
+	font-size: 15px;
+	line-height: 1.25rem;
+	border-radius: 5px;
+	border-color: var(--primary);
+}
+
+.formTopNote,
+.formMiddleNote,
+.formBottomNote {
+	display: flex;
+	justify-content: center;
+	font-size: 14px;
+	color: var(--gray);
+}
+
+.formBottomNote {
+	display: flex;
+	justify-content: space-around;
+}
+
+.formMiddleNote {
+	padding: 24px 0 16px;
+	font-size: 11px;
+	color: #b6c6e3;
+}
+
+.formTopNote {
+	padding-top: 24px;
+}
+
+.formTopNote a,
+.formBottomNote a {
+	color: var(--primary);
+}

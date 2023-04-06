@@ -1,35 +1,39 @@
-import { ButtonTag, Htag, Ptag } from '../components';
-import React, { useState } from 'react';
+import { ButtonTag, Htag } from '../components';
+import React from 'react';
 import { withLayout } from '../layout/Layout';
 import { GetStaticProps } from 'next';
-import { dashboardMenu } from '../helpers/helpers';
 import { FirstLevelMenuItem } from '../interfaces/menu.interface';
 import axios from 'axios';
-import { Balance, BalanceMoney } from '../interfaces/payme.interface';
-import { DashlightComponent } from '../page-components';
+import { Balance } from '../interfaces/payme.interface';
+import { signIn, signOut, useSession } from 'next-auth/react';
+import Image from 'next/image';
 
 function Home({ menu, firstCategory, balance }: HomeProps): JSX.Element {
+	const { data: session, status } = useSession();
 	return (
 		<>
-
-			<DashlightComponent>
-				<Htag tag='h1' >Hashimov Foziljon</Htag>
-				<span className='h1'>Typography</span>
-				<ButtonTag appearence='primary' className='dsa'>Reports</ButtonTag>
-				<ButtonTag appearence='primary' arrow='right'>Reports</ButtonTag>
-				<ButtonTag appearence='white'>Reports</ButtonTag>
-				<ButtonTag appearence='white' arrow='right'>Reports</ButtonTag>
-				<ButtonTag appearence='white' arrow='down'>Reports</ButtonTag>
-				<Ptag>Some text default size</Ptag>
-				<Ptag size='l'>Some text large size</Ptag>
-				<Ptag size='m'>Some text large size</Ptag>
-				<Ptag size='s'>Some text large size</Ptag>
-				{balance?.data.name}<br />
-				{balance?.data.account}<br />
-				{balance?.data.branch}<br />
-				{balance?.data.code_currency}<br />
-				{balance?.data.current_balance}<br />
-			</DashlightComponent>
+			{status === 'authenticated' ? session?.user?.email : <></>}
+			{
+				!session
+					?
+					<ButtonTag appearence='primary' onClick={() => signIn()}>Sign in</ButtonTag>
+					:
+					<>
+						<Htag>{session?.user?.name}</Htag>
+						<Image
+							alt={session?.user?.name ?? ''}
+							src={session?.user?.image ?? ''}
+							width={75}
+							height={75}
+							style={{
+								borderRadius: '50%'
+							}}
+							priority={true}
+						/>
+						<Htag>{session?.user?.email}</Htag>
+						<ButtonTag appearence='white' onClick={() => signOut()}>Sign out</ButtonTag>
+					</>
+			}
 		</>
 	);
 }

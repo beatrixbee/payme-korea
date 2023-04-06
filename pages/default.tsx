@@ -7,8 +7,10 @@ import axios from 'axios';
 import { Balance, BalanceMoney } from '../interfaces/payme.interface';
 import { FirstLevelMenuItem } from '../interfaces/menu.interface';
 import Link from 'next/link';
+import { useSession } from 'next-auth/react';
 
 function Default({ balance, balanceMoney }: DashlightProps): JSX.Element {
+	const { data: session, status } = useSession({ required: true });
 
 	return (
 		<DashlightComponent

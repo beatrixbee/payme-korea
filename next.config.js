@@ -1,15 +1,24 @@
 module.exports = {
-  async redirects() {
-    return [
-      {
-        source: '/',
-        destination: '/default',
-        permanent: true,
-      },
-    ]
-  },
+  // async redirects() {
+  //   return [
+  //     {
+  //       source: '/',
+  //       destination: '/default',
+  //       permanent: true,
+  //     },
+  //   ]
+  // },
+
   images: {
-    domains: ['courses-top.ru']
+    // remotePatterns: [
+    //   {
+    //     protocol: 'https',
+    //     hostname: 'avatars.githubusercontent.com',
+    //     port: '',
+    //     pathname: '/**/**',
+    //   },
+    // ],
+    domains: ['avatars.githubusercontent.com']
   },
   webpack(config, options) {
     config.module.rules.push({
