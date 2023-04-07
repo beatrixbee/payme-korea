@@ -11,7 +11,7 @@ import { useSession } from 'next-auth/react';
 
 function Default({ balance, balanceMoney }: DashlightProps): JSX.Element {
 	const { data: session, status } = useSession({ required: true });
-
+	console.log(session)
 	return (
 		<DashlightComponent
 			balance={balance}

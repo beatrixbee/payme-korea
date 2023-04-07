@@ -1,7 +1,7 @@
 import NextAuth from "next-auth";
 import GithubProvider from "next-auth/providers/github";
 import GoogleProvider from "next-auth/providers/google";
-// import EmailProvider from 'next-auth/providers';
+import CredentialsProvider from "next-auth/providers/credentials";
 
 
 export const authOptions = {
@@ -15,27 +15,27 @@ export const authOptions = {
 			clientId: process.env.GOOGLE_ID,
 			clientSecret: process.env.GOOGLE_SECRET,
 		}),
-		// EmailProvider({
-		// 	async authorize(credentials) {
-		// 		const { email, password } = credentials;
+		CredentialsProvider({
+			async authorize(credentials) {
+				const { email, password } = credentials;
 
-		// 		// Replace this with your own authentication logic
-		// 		if (email === 'admin' && password === 'admin') {
-		// 			// Return user object if authentication is successful
-		// 			return { email: 'AzizH.com', name: 'Aziz' };
-		// 		} else {
-		// 			// Return null if authentication fails
-		// 			return null;
-		// 		}
-		// 	}
-		// })
+				// Replace this with your own authentication logic
+				if (email === 'admin' && password === 'admin') {
+					// Return user object if authentication is successful
+					return { email: 'azizhusanov@example.com', name: 'Aziz' };
+				} else {
+					// Return null if authentication fails
+					return null;
+				}
+			}
+		})
 		// ...add more providers here
 	],
 	debug: process.env.NODE_ENV === 'development',
 	secret: process.env.JWT_SECRET,
 	session: {
 		// Seconds - How long until an idle session expires and is no longer valid.
-		maxAge: 60 * 60 * 8, // 8 hours
+		maxAge: 60 * 30, // 0.5 hour
 	},
 	callbacks: {
 		async jwt({ token, account }) {

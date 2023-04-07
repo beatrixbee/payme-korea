@@ -15,8 +15,8 @@ function App({
 		</Head>
 		<SessionProvider
 			session={session}
-		// Re-fetch session every 5 minutes
-		// refetchInterval={5 * 60}
+			// Re-fetch session every 5 minutes
+			refetchInterval={60 * 30 + 1}
 		>
 			<Component {...pageProps} />
 		</SessionProvider>
