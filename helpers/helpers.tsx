@@ -1,4 +1,5 @@
 import { DashboardCategory, FirstLevelCategory, FirstLevelMenuItem, SecondLevelCategory, SecondLevelMenuItem } from '../interfaces/menu.interface';
+import { Transactions } from '../interfaces/payme.interface';
 
 export const dashboardMenu: FirstLevelMenuItem[] = [
 	{ route: 'default', name: 'Default', icon: <em className="ni ni-cart-fill" />, id: DashboardCategory.Default },
@@ -19,3 +20,14 @@ export const applicationsSecondLevelMenu: SecondLevelMenuItem[] = [
 	{ route: 'userList', name: 'User List', id: SecondLevelCategory.UserList, parentId: FirstLevelCategory.UserManage },
 	{ route: 'userDetail', name: 'User Detail', isNew: true, id: SecondLevelCategory.UserDetail, parentId: FirstLevelCategory.UserManage },
 ]
+
+interface paginateProps {
+	items: Transactions[];
+	pageNumber: number;
+	pageSize: number;
+}
+
+export const paginate = ({ items, pageNumber, pageSize }: paginateProps) => {
+	const startIndex = (pageNumber - 1) * pageSize;
+	return items.slice(startIndex, startIndex + pageSize);
+};

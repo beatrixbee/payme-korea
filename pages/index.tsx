@@ -4,11 +4,11 @@ import { withLayout } from '../layout/Layout';
 import { GetStaticProps } from 'next';
 import { FirstLevelMenuItem } from '../interfaces/menu.interface';
 import axios from 'axios';
-import { Balance } from '../interfaces/payme.interface';
+import { Balance, Transactions, TransactionsData } from '../interfaces/payme.interface';
 import { signIn, signOut, useSession } from 'next-auth/react';
 import Image from 'next/image';
 
-function Home({ menu, firstCategory, balance }: HomeProps): JSX.Element {
+function Home({ menu, firstCategory, balance, transactions }: HomeProps): JSX.Element {
 	const { data: session, status } = useSession();
 	return (
 		<>
@@ -20,7 +20,7 @@ function Home({ menu, firstCategory, balance }: HomeProps): JSX.Element {
 					:
 					<>
 						<Htag>{session?.user?.name}</Htag>
-						<Image
+						{/* <Image
 							alt={session?.user?.name ?? ''}
 							src={session?.user?.image ?? ''}
 							width={75}
@@ -29,7 +29,7 @@ function Home({ menu, firstCategory, balance }: HomeProps): JSX.Element {
 								borderRadius: '50%'
 							}}
 							priority={true}
-						/>
+						/> */}
 						<Htag>{session?.user?.email}</Htag>
 						<ButtonTag appearence='white' onClick={() => signOut()}>Sign out</ButtonTag>
 					</>
@@ -44,6 +44,9 @@ export const getStaticProps: GetStaticProps<HomeProps> = async () => {
 	const firstCategory = 0;
 	try {
 		const { data: balance, status: balanceStatus, statusText: balanceStatusText } = await axios.get(process.env.PAYME_BALANCE + '');
+		const res = await axios.get('https://jsonplaceholder.typicode.com/todos')
+		const transactions = res.data;
+
 		if (balanceStatusText != 'OK') {
 			return {
 				notFound: true
@@ -53,6 +56,7 @@ export const getStaticProps: GetStaticProps<HomeProps> = async () => {
 			props: {
 				balance,
 				firstCategory,
+				transactions
 			}
 		};
 	} catch {
@@ -66,4 +70,5 @@ interface HomeProps extends Record<string, unknown> {
 	balance?: Balance;
 	menu?: FirstLevelMenuItem[];
 	firstCategory: number;
+	transactions?: Transactions;
 }
