@@ -5,12 +5,13 @@ import axios from 'axios';
 import { GetStaticProps } from 'next';
 import { Transactions, TransactionsData } from '../interfaces/payme.interface';
 import TableComponent from '../page-components/TableComponent/TableComponent';
+import { DashlightComponent } from '../page-components';
 
 function Sales({ transactions }: SalesProps): JSX.Element {
 	const { data: session, status } = useSession({ required: true });
 	return (
 		<>
-			<TableComponent transactions={transactions} />
+			<TableComponent tableHeader='Transactions' transactions={transactions} />
 		</>
 	);
 }
