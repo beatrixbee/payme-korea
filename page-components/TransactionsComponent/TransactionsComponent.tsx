@@ -1,14 +1,15 @@
-import { TableComponentProps } from './TableComponent.props';
-import styles from './TableComponent.module.css'
+import { TransactionsComponent } from './TransactionsComponent.props';
+import styles from './TransactionsComponent.module.css'
 import { ButtonTag, Card, Htag } from '../../components';
-import { useState } from 'react';
-import { paginate } from '../../helpers/helpers';
+import { useMemo, useState } from 'react';
+import { TransactionsTableData, paginate } from '../../helpers/helpers';
 import Pagination from '../../components/Pagination/Pagination';
 import cn from 'classnames';
-import { useTable } from 'react-table';
+import { Column, useTable } from 'react-table';
 import React from 'react';
+import ReactTable from '../ReactTable/ReactTable';
 
-const TableComponent = ({ transactions, tableHeader, className, ...props }: TableComponentProps): JSX.Element => {
+const TransactionsComponent = ({ transactions, tableHeader, className, ...props }: TransactionsComponent): JSX.Element => {
 	const [currentPage, setCurrentPage] = useState(1);
 	const pageSize = 15;
 
@@ -20,6 +21,38 @@ const TableComponent = ({ transactions, tableHeader, className, ...props }: Tabl
 		return <div>Loading...</div>;
 	}
 	const paginatedPosts = paginate({ items: transactions, pageNumber: currentPage, pageSize });
+
+	const ID = ({ value }: { value: number }) => {
+		// Loop through the array and create a badge-like component instead of a comma-separated string
+		return (
+			<span className='badge'>
+				{value}
+			</span>
+		);
+	};
+
+
+	const columns: Column<TransactionsTableData>[] = useMemo(() => [
+		{
+			Header: 'ID',
+			accessor: 'id',
+			Cell: ({ cell: { value } }) => <ID value={value} />
+
+		},
+		{
+			Header: 'Error_1',
+			accessor: 'error_1'
+		},
+		{
+			Header: 'ReceiptId',
+			accessor: 'receiptId'
+		},
+		{
+			Header: 'Error_3',
+			accessor: 'error_3'
+		},
+	], []);
+
 	return (
 		<div className={cn(className, styles.tableblock)} {...props}>
 			<div className={styles.title}>
@@ -50,13 +83,7 @@ const TableComponent = ({ transactions, tableHeader, className, ...props }: Tabl
 					</div>
 				</div>
 				<div className={styles.tableContent}>
-					{/* <table>
-						{paginatedPosts.map((item) => {
-							return (
-								<tr>{item.created_at}</tr>
-							)
-						})}
-					</table> */}
+					<ReactTable data={transactions} columns={columns} />
 				</div>
 				<div className={styles.tableFooter}>
 					<Pagination
@@ -71,4 +98,4 @@ const TableComponent = ({ transactions, tableHeader, className, ...props }: Tabl
 		</div >
 	);
 };
-export default TableComponent;
+export default TransactionsComponent;

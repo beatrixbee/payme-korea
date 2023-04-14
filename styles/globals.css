@@ -56,3 +56,7 @@ a {
 
 
 /* Using a string */
+
+.badge {
+	color: var(--primary)
+}

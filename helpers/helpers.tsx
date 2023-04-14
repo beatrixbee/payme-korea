@@ -3,7 +3,7 @@ import { Transactions } from '../interfaces/payme.interface';
 
 export const dashboardMenu: FirstLevelMenuItem[] = [
 	{ route: 'default', name: 'Default', icon: <em className="ni ni-cart-fill" />, id: DashboardCategory.Default },
-	{ route: 'sales', name: 'Sales', icon: <em className="ni ni-activity-round-fill" />, id: DashboardCategory.Sales },
+	{ route: 'transactions', name: 'Transactions', icon: <em className="ni ni-activity-round-fill" />, id: DashboardCategory.Sales },
 	{ route: 'analytics', name: 'Analytics', icon: <em className="ni ni-growth-fill" />, id: DashboardCategory.Analytics },
 ]
 
@@ -25,6 +25,13 @@ interface paginateProps {
 	items: Transactions[];
 	pageNumber: number;
 	pageSize: number;
+}
+
+export interface TransactionsTableData {
+	id: number;
+	error_1: string;
+	receiptId: string;
+	error_3: string;
 }
 
 export const paginate = ({ items, pageNumber, pageSize }: paginateProps) => {

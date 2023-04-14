@@ -4,14 +4,15 @@ import { useSession } from 'next-auth/react';
 import axios from 'axios';
 import { GetStaticProps } from 'next';
 import { Transactions, TransactionsData } from '../interfaces/payme.interface';
-import TableComponent from '../page-components/TableComponent/TableComponent';
-import { DashlightComponent } from '../page-components';
+import { Column } from 'react-table';
+import { TransactionsTableData } from '../helpers/helpers';
+import TransactionsComponent from '../page-components/TransactionsComponent/TransactionsComponent';
 
 function Sales({ transactions }: SalesProps): JSX.Element {
 	const { data: session, status } = useSession({ required: true });
 	return (
 		<>
-			<TableComponent tableHeader='Transactions' transactions={transactions} />
+			<TransactionsComponent tableHeader='Transactions' transactions={transactions} />
 		</>
 	);
 }
@@ -25,6 +26,7 @@ export const getStaticProps: GetStaticProps<SalesProps> = async () => {
 		const transactionsData: TransactionsData = res.data;
 		const transStatustext = res.statusText;
 		const transactions: Transactions[] = transactionsData.data
+		console.log(transStatustext)
 		if (transStatustext != 'OK') {
 			return {
 				notFound: true
